@@ -12,7 +12,7 @@ chat_completion = client.chat.completions.create(
     messages=[
         {
             "role": "user",
-            "content": "what is the capital of France?",
+            "content": "what is the most popular food?",
             "token_limit": 1000
         }
     ],
