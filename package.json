@@ -1,0 +1,27 @@
+{
+  "name": "food_website",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "My ai powered site",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yatheeshpatcha/Food_website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yatheeshpatcha/Food_website/issues"
+  },
+  "homepage": "https://github.com/Yatheeshpatcha/Food_website#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "groq-sdk": "^1.5.0"
+  }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head background-color="#e6d543">
+  <meta charset="UTF-8">
+  <title>FOODIFY</title>
+  <style>
+    body { font-family: Impact, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; }
+    input { width: 80%; padding: 10px; margin-right: 10px; }
+    button { padding: 10px 20px; }
+    #output { margin-top: 20px; padding: 15px; background: #dac405; border-radius: 5px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>get recommendations for food</h1>
+  <input type="text" id="userInput" placeholder="Ask something...">
+  <button id="askBtn">Submit</button>
+  
+  <div id="output">reccomendations will appear here...</div>
+
+  <script>
+    document.getElementById('askBtn').addEventListener('click', async () => {
+      const prompt = document.getElementById('userInput').value;
+      const outputDiv = document.getElementById('output');
+      
+      if (!prompt) return alert('Please enter a prompt');
+      
+      outputDiv.innerText = 'Thinking...';
+
+      try {
+        // Fetch from your local Node.js server
+        const response = await fetch('http://localhost:3000/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: prompt })
+        });
+
+        const data = await response.json();
+        
+        if (data.reply) {
+          outputDiv.innerText = data.reply;
+        } else {
+          outputDiv.innerText = 'Error: ' + (data.error || 'Unknown error');
+        }
+      } catch (error) {
+        outputDiv.innerText = 'Could not connect to server.';
+        console.error(error);
+      }
+    });
+  </script>
+
+</body>
+</html>

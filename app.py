@@ -12,8 +12,8 @@ chat_completion = client.chat.completions.create(
     messages=[
         {
             "role": "user",
-            "content": "what is the most popular food?",
-            "token_limit": 1000
+            "content": "give me one good food recommendation?",
+            
         }
     ],
     model="openai/gpt-oss-20b",
