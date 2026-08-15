@@ -3,5 +3,24 @@
     "*": true,
     "plaintext": false,
     "properties": false
+  },
+  "emojisense.languages": {
+    "plaintext": {
+      "markupCompletionsEnabled": true,
+      "emojiDecoratorsEnabled": true
+    },
+    "javascript": true,
+    "typescript": true,
+    "python": true,
+    "java": true,
+    "csharp": true,
+    "cpp": true,
+    "ruby": true,
+    "go": true,
+    "php": true,
+    "html": true,
+    "css": true,
+    "json": true,
+    "yaml": true
   }
 }
