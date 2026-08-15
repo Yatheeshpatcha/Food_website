@@ -1,8 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import Groq from 'groq-sdk'; // Make sure the @ symbol is removed here
-
+import Groq from '@groq/groq-sdk'
 
 dotenv.config();
 

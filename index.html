@@ -12,9 +12,9 @@
     .btn-sweet { background-color: #ff69b4; color: white; border: none; border-radius: 4px; }
     .btn-savory { background-color: #8b4513; color: white; border: none; border-radius: 4px; }
     .btn-italian { background-color: rgb(223, 243, 5); color: white; border: none; border-radius: 4px; }
+    .btn-french { background-color: rgb(70, 130, 180); color: white; border: none; border-radius: 4px; }
+    .btn-mexican { background-color: rgb(3, 125, 9); color: white; border: none; border-radius: 4px; }
     .toggle-btn.selected { outline: 3px solid rgba(0,0,0,0.15); transform: translateY(-2px); }
-    .modifier-btn { box-shadow: inset 0 -3px rgba(0,0,0,0.08); }
-    .modifier-btn.selected { outline: 3px dashed rgba(0,0,0,0.18); }
     #output {  padding: 15px; background: #2912d5; border-radius: 5px; margin-top: 20px; min-height: 100px; }
   </style>
 </head>
@@ -24,11 +24,15 @@
   <input style=" border: none; background-color: rgb(226, 237, 242); text-align: center; color: #16036a;" type="text" id="userInput" placeholder="Ask something...">
   <br>
 
-<button id="spicyBtn" class="btn-spicy toggle-btn" data-category="spicy">🌶️ Spicy</button>
-  <button id="sweetBtn" class="btn-sweet toggle-btn" data-category="sweet">🍬 Sweet</button>
-  <button id="savoryBtn" class="btn-savory toggle-btn" data-category="savory">🍖 Savory</button>
-  <button id="randomBtn" class="btn-random toggle-btn" data-category="random">🎲 Random</button>
-  <button id="italianBtn" class="btn-italian modifier-btn toggle-btn" data-modifier="italian">🍕 Italian</button>
+<button id="spicyBtn" class="btn-spicy toggle-btn" data-prompt="Give me a list of good spicy food recommendations with a brief description for each.">🌶️ Spicy</button>
+  <button id="sweetBtn" class="btn-sweet toggle-btn" data-prompt="Give me a list of good sweet food recommendations with a brief description for each.">🍬 Sweet</button>
+  <button id="savoryBtn" class="btn-savory toggle-btn" data-prompt="Give me a list of good savory food recommendations with a brief description for each.">🍖 Savory</button>
+  <button id="randomBtn" class="btn-random toggle-btn" data-prompt="Give me 1  random food recommendation with a brief description for each.">🎲 Random</button>
+  <br>
+  <br>
+  <button id="italianBtn" class="btn-italian toggle-btn" data-prompt="make it italian food">🍕 Italian</button>
+  <button id="mexicanBtn" class="btn-mexican toggle-btn" data-prompt="make it mexican food">🌮 Mexican</button>
+  <button id="frenchBtn" class="btn-french toggle-btn" data-prompt="make it french food">🇫🇷 French</button>
   <br>
   <button style="background-color: #130367; color: rgb(19, 162, 210); border: none; border-radius: 4px; padding: 10px 20px; margin-right: 5px; cursor: pointer;" id="askBtn">Submit</button>
 
@@ -60,7 +64,7 @@
       }
     }
 
-    // Toggle behavior for category and modifier buttons (allow multiple selection)
+    // Toggle behavior for category buttons (allow multiple selection)
     document.querySelectorAll('.toggle-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.currentTarget.classList.toggle('selected');
@@ -72,24 +76,13 @@
       const userText = document.getElementById('userInput').value.trim();
       const selected = Array.from(document.querySelectorAll('.toggle-btn.selected'));
 
-      // Separate categories and modifiers
-      const categories = selected.map(b => b.dataset.category).filter(Boolean);
-      const modifiers = selected.map(b => b.dataset.modifier).filter(Boolean);
-      const modifierText = modifiers.length ? modifiers.join(' ') : '';
-
-      function buildPromptForCategory(cat) {
-        const mod = modifierText ? ' ' + modifierText.charAt(0).toUpperCase() + modifierText.slice(1) : '';
-        if (cat === 'random') {
-          return `Give me a list of random${mod} food recommendations with a brief description for each.`;
-        }
-        return `Give me a list of good ${cat}${mod} food recommendations with a brief description for each.`;
-      }
+      let prompts = selected.map(b => b.dataset.prompt);
 
       // If user entered custom text, prefer that as the main prompt
       if (userText) {
-        if (categories.length) {
-          const contextPrompts = categories.map(c => buildPromptForCategory(c));
-          const combined = userText + '\n\nContext: ' + contextPrompts.join(' \n');
+        // If categories are selected, append them as context
+        if (prompts.length) {
+          const combined = userText + '\n\nContext: ' + prompts.join(' \n');
           searchAI(combined);
         } else {
           searchAI(userText);
@@ -98,11 +91,12 @@
       }
 
       // No user text — use selected categories only
-      if (categories.length === 0) {
+      if (prompts.length === 0) {
         return alert('Please enter a prompt or select at least one category.');
       }
 
-      const combinedPrompt = categories.map(c => buildPromptForCategory(c)).join(' \n');
+      // Combine selected category prompts into one request
+      const combinedPrompt = prompts.join(' \n');
       searchAI(combinedPrompt);
     });
 
