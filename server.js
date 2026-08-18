@@ -1,7 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import Groq from '@groq/groq-sdk'
+import Groq from 'groq-sdk';
+
 
 dotenv.config();
 
@@ -18,8 +19,10 @@ app.post('/api/chat', async (req, res) => {
 
     const chatCompletion = await groq.chat.completions.create({
       messages: [{ role: 'user', content: prompt }],
-      model: 'llama-3.3-70b-versatile',
+      model: 'openai/gpt-oss-20b',
+      max_completion_tokens: 2048,
     });
+
 
     res.json({ reply: chatCompletion.choices[0].message.content });
   } catch (error) {

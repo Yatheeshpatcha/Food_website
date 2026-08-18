@@ -8,7 +8,7 @@ load_dotenv()
 # Initialize client (it automatically picks up the GROQ_API_KEY env variable)
 client = Groq()
 completion = client.chat.completions.create(
-    model="openai/gpt-oss-120b",
+    model="openai/gpt-oss-20b",
     messages=[
       {
         "role": "user",
