@@ -539,11 +539,15 @@
         outputDiv.innerText = "getting your reccomendations...";
 
         try {
-          const response = await fetch("http://localhost:3000/api/chat", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ prompt: promptText }),
+          
+          const response = await fetch('/.netlify/functions/chat', {
+            method: 'POST',
+             headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ prompt: promptText }), // Make sure this matches your variable name
           });
+          
 
           const data = await response.json();
           if (data.reply) {
