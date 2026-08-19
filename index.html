@@ -126,6 +126,8 @@
         filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
         transition: background-color 0.3s ease;
       }
+
+      
       .btn-japanese:hover {
         background-color: rgb(71, 3, 1);
       }
@@ -141,35 +143,105 @@
       .btn-sour:hover {
         background-color: rgb(80, 89, 1);
       }
+      .btn-cheap {
+        background-color: rgb(39, 234, 5);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        display: inline-block;
+        filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+        transition: background-color 0.3s ease;
+      }
+
+         .btn-decent {
+        background-color: rgb(39, 234, 5);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        display: inline-block;
+        filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-expensive {
+        background-color: rgb(39, 234, 5);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        display: inline-block;
+        filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-super {
+        background-color: rgb(39, 234, 5);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        display: inline-block;
+        filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+        transition: background-color 0.3s ease;
+      }
+      .btn-cheap:hover {
+        background-color: rgb(4, 95, 39);
+      }
+
+      .btn-decent:hover {
+        background-color: rgb(4, 95, 39);
+      }
+
+      .btn-expensive:hover {
+        background-color: rgb(4, 95, 39);
+      }
+
+       .btn-super:hover {
+        background-color: rgb(4, 95, 39);
+      }
+
       .btn-spicy.selected {
-        background-color: rgb(150, 50, 50);
+        background-color: rgb(89, 1, 1);
+      }
+      .btn-cheap.selected {
+        background-color: rgb(4, 95, 39);
+      }
+
+      .btn-expensive.selected {
+        background-color: rgb(4, 95, 39);
+      }
+
+      .btn-super.selected {
+        background-color: rgb(4, 95, 39);
+      }
+
+      .btn-decent.selected {
+        background-color: rgb(4, 95, 39);
       }
       .btn-random.selected {
-        background-color: rgb(60, 50, 150);
+        background-color: rgb(10, 1, 61);
       }
       .btn-sweet.selected {
-        background-color: rgb(150, 100, 130);
+        background-color: rgb(89, 1, 70);
       }
       .btn-savory.selected {
-        background-color: rgb(140, 80, 50);
+        background-color: rgb(71, 3, 1);
       }
       .btn-italian.selected {
-        background-color: rgb(180, 180, 80);
+        background-color: rgb(131, 131, 2);
       }
       .btn-french.selected {
-        background-color: rgb(100, 150, 200);
+        background-color: rgb(10, 1, 96);
       }
       .btn-mexican.selected {
-        background-color: rgb(50, 150, 80);
+        background-color: rgb(1, 61, 1);
       }
       .btn-thai.selected {
-        background-color: rgb(220, 150, 100);
+        background-color: rgb(131, 101, 2);
       }
       .btn-japanese.selected {
-        background-color: rgb(150, 100, 80);
+        background-color: rgb(139, 69, 19);
       }
       .btn-sour.selected {
-        background-color: rgb(180, 180, 100);
+        background-color: rgb(242, 255, 0);
       }
       .toggle-btn.selected {
         outline: 3px solid rgba(0, 0, 0, 0.15);
@@ -185,6 +257,7 @@
         border-radius: 20px;
         padding: 20px;
         margin: 15px 0;
+       
       }
       .button-container2 {
         background:
@@ -195,7 +268,33 @@
         border-radius: 20px;
         padding: 20px;
         margin: 15px 0;
+        
       }
+
+      .button-container3 {
+        background:
+          linear-gradient(rgb(60, 60, 61), rgb(60, 60, 61)) padding-box,
+          linear-gradient(135deg, rgba(238, 255, 0, 0.5), rgba(255, 21, 0, 0.5))
+            border-box;
+        border: 2px solid transparent;
+        border-radius: 20px;
+        padding: 20px;
+        margin: 15px 0;
+        
+      }
+
+      .button-container4 {
+        background:
+          linear-gradient(rgb(60, 60, 61), rgb(60, 60, 61)) padding-box,
+          linear-gradient(135deg, rgba(238, 255, 0, 0.5), rgba(255, 21, 0, 0.5))
+            border-box;
+        border: 2px solid transparent;
+        border-radius: 20px;
+        padding: 20px;
+        margin: 15px 0;
+        
+      }
+
       #output {
         padding: 15px;
         background: #2912d5;
@@ -322,26 +421,97 @@
         🍣Japanese
       </button>
     </div>
+
+    <div class="button-container3">
+      <h2
+        style="
+          color: transparent;
+          text-align: center;
+          background: linear-gradient(90deg, rgb(238, 255, 0), rgb(255, 21, 0));
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        "
+      >
+        Pick your price
+      </h2>
+      <br />
+    <button
+        id="cheapBtn"
+        class="btn-cheap toggle-btn"
+        data-prompt="make it under 20 dollars food"
+      >
+        💲under $20
+      </button>
+
+      <button
+        id="decentBtn"
+        class="btn-decent toggle-btn"
+        data-prompt="make it under 50 dollars food"
+      >
+        💲under $50
+      </button>
+
+      <button
+        id="expensiveBtn"
+        class="btn-expensive toggle-btn"
+        data-prompt="make it over 50 dollars food"
+      >
+        💲over $50
+      </button>
+
+       <button
+        id="superBtn"
+        class="btn-super toggle-btn"
+        data-prompt="make it over 100 dollars food"
+      >
+        💲over $100
+      </button>
+
+
+      </div>
+
+       <div class="button-container3">
+      <h2
+        style="
+          color: transparent;
+          text-align: center;
+          background: linear-gradient(90deg, rgb(238, 255, 0), rgb(255, 21, 0));
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        "
+      >
+        Add your own preferences
+      </h2>
+
+
+
     <input
       style="
         border: none;
-        background-color: rgb(226, 237, 242);
+        background-color: rgb(15, 16, 16);
         text-align: center;
-        color: #16036a;
+        color: #f5f5f6;
+        align-self: centered;
       "
       type="text"
       id="userInput"
-      placeholder="Ask something..."
+      placeholder="preferences here..."
     />
+
+    </div>
+
     <button
       style="
-        background-color: #130367;
-        color: rgb(19, 162, 210);
+      align-self: center;
+        background-color: #3d3c3f;
+        color: rgb(13, 16, 16);
         border: none;
         border-radius: 4px;
         padding: 10px 20px;
         margin-right: 5px;
-        cursor: pointer;
+        cursor: hand;
       "
       id="askBtn"
     >
@@ -351,14 +521,14 @@
     <div
       id="output"
       style="
-        background-color: rgb(212, 222, 230);
-        color: #16036a;
+        background-color: rgb(54, 57, 59);
+        color: #f6f6f8;
         font-family: sans-serif;
         text-align: center;
         align-self: center;
       "
     >
-      reccomendations will appear here...
+      recommendations will appear here...
     </div>
 
     <script>
@@ -403,28 +573,23 @@
 
         let prompts = selected.map((b) => b.dataset.prompt);
 
-        // If user entered custom text, prefer that as the main prompt
-        if (userText) {
-          // If categories are selected, append them as context
-          if (prompts.length) {
-            const combined = userText + "\n\nContext: " + prompts.join(" \n");
-            searchAI(combined);
+        // Always combine input with buttons
+        let finalPrompt = userText;
+        if (prompts.length) {
+          if (userText) {
+            finalPrompt = userText + "\n\nAdditional preferences: " + prompts.join(", ");
           } else {
-            searchAI(userText);
+            finalPrompt = prompts.join("\n");
           }
-          return;
         }
 
-        // No user text — use selected categories only
-        if (prompts.length === 0) {
+        if (!finalPrompt) {
           return alert(
             "Please enter a prompt or select at least one category.",
           );
         }
 
-        // Combine selected category prompts into one request
-        const combinedPrompt = prompts.join(" \n");
-        searchAI(combinedPrompt);
+        searchAI(finalPrompt);
       });
 
       // Optional: allow Enter key in input to trigger Submit
